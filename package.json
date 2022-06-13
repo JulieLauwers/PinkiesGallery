@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@inrupt/solid-client": "^1.23.1",
+    "@inrupt/solid-client-authn-browser": "^1.12.0",
+    "@inrupt/vocab-common-rdf": "^1.0.5",
+    "bulma": "^0.9.4"
+  },
+  "devDependencies": {
+    "prettier": "2.6.2"
+  }
+}

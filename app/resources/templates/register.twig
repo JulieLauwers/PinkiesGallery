@@ -1,0 +1,49 @@
+{% extends "layout/layout.twig" %}
+
+{% block pageContent %}
+      <section class="section">
+          
+          <h1 class="is-size-1 has-text-centered">Register</h1>
+          {% if formErrors|length > 0 %}
+                {% for error in formErrors %}
+                <h5 class="error">{{ error }}</h5>
+                {% endfor %}
+                {% endif %}
+                <form class="forms" method="POST" class="form">
+            <div class="field">
+            <label class="label">Username</label>
+            <div class="control ">
+              <input class="input" type="text" required="required" placeholder="Username" value="{{ username }}" name="username">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">E-mail</label>
+            <div class="control ">
+              <input class="input" type="text" required="required" placeholder="example@example.com" value="{{ email }}" name="email">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="password" placeholder="Password" name="password">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Confirm password</label>
+            <div class="control">
+              <input class="input" type="password" placeholder="Password" name="confirm-password">
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-primary">Register</button>
+              </div>
+          </div>
+          <input type="hidden" name="moduleAction" value="register" />
+        </form>
+        <div class="go-register">
+            <p>Already have an account?</p>
+            <a href="/login"><span>Login</span></a>
+        </div>
+      </section>
+{% endblock %}

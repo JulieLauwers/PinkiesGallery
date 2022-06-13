@@ -1,0 +1,22 @@
+{% extends "layout/layout.twig" %}
+
+{% block pageContent %}
+
+      <section class="section">
+          <h1 class="title is-1">Messages</h1>
+          {% if message %}
+           <form class="forms" method="POST" action="/admin/message/{{message.id}}/delete"> 
+                <div class="block">
+                    <h3 class="title is-3">{{ message.subject }}</h3>
+                    <p>{{ message.question }}</p>
+                    <p>Message from: <span>{{ message.email }}</span></p>
+                <p>Time: {{ message.added_on }}</p>
+                </div>
+                <div class="control">
+                    <button type="submit" class="button is-danger">Delete</button>
+                    <input type="hidden" name="moduleAction" value="delete" />
+              </div>
+            </form>
+          {% endif %}
+      </section>
+{% endblock %}

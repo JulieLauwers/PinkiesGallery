@@ -1,0 +1,39 @@
+{% extends "layout/layout.twig" %}
+
+{% block pageContent %}
+    <section class="section">
+    <h1 class="title is-1">Contact me</h1>
+    {% if formErrors|length > 0 %}
+    {% for error in formErrors %}
+    <h5 class="error">{{ error }}</h5>
+    {% endfor %}
+    {% endif %}
+        <form class="forms" method="POST">
+          <p class="is-size-5">You can contact me here for questions or to hire me. I will reply to your question as fast as possible, you will recieve an answer via email.</p>
+        <div class="field">
+            <label class="label">E-mail</label>
+            <div class="control ">
+              <input class="input" type="text" required="required" placeholder="example@example.com" value="{{ email }}" name="email">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Subject</label>
+            <div class="control ">
+              <input class="input" type="text" required="required" placeholder="Subject" value="{{ subject }}" name="subject">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Message</label>
+            <div class="control">
+              <textarea class="textarea" required="required" placeholder="Message" name="message">{{ message }}</textarea>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-info">Submit</button>
+              </div>
+          </div>
+          <input type="hidden" name="moduleAction" value="contact" />
+        </form>
+      </section>
+{% endblock %}

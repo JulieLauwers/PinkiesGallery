@@ -1,0 +1,25 @@
+{% extends "layout/layout.twig" %}
+
+{% block pageContent %}
+    <section class="section">
+    {% if photo %}
+           <form class="photo" method="POST" action="/gallery/{{photo.id}}/delete"> 
+        <h1 class="title is-1">{{photo.title}}</h1>
+        <div class="photo-display-detail">
+            <figure class="image image-size-detail">
+            <img src="{{photo.path}}{{photo.name}}{{photo.extension}}">
+            </figure>
+        </div>
+        <p>Photo made by <strong>Julie Lauwers</strong> in {{photo.location}}</p>
+        {% if userRole == 'admin' %}
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-danger">Delete</button>
+                <input type="hidden" name="moduleAction" value="deletePhoto" />
+            </div>
+        </div>
+        {% endif %}
+        </form>
+    {% endif %}
+    </section>
+{% endblock %}

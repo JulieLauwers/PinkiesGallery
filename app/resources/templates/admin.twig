@@ -1,0 +1,23 @@
+{% extends "layout/layout.twig" %}
+
+{% block pageContent %}
+    <section class="section">
+          <h2 class="title is-2">Hello there {{username}}!</h2>
+          <p class="add-photo-text">Would you like to add another photo to your gallery?</p>
+          <a class="button is-info" href="/admin/photo/add">Add photo</a>
+      </section>
+
+      <section class="section">
+          <h2 class="title is-2">Messages</h2>
+          {% for message in messages %}
+          <a href="/admin/message/{{ message.id }}">
+           <div class="block">
+          <h4 class="title is-4">{{ message.subject }}</h4>
+            <p>{{ message.question|length > 50 ? message.question|slice(0,50) ~ '...' : message.question }}</p>
+            <p class="last-objects">Message from: <strong>{{ message.email }}</strong></p>
+            <p class="last-objects">Time: {{ message.added_on }}</p>
+          </div>
+          </a>
+          {% endfor %}
+      </section>
+{% endblock %}

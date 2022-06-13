@@ -1,0 +1,47 @@
+{% extends "layout/layout.twig" %}
+
+{% block pageContent %}
+<section class="section">
+<h1 class="is-size-1">Add a photo</h1>
+{% if formErrors|length > 0 %}
+    {% for error in formErrors %}
+    <h5 class="error">{{ error }}</h5>
+    {% endfor %}
+    {% endif %}
+          <form class="forms" method="POST" enctype="multipart/form-data">
+        <div class="field">
+            <label class="label">Title of photo</label>
+            <div class="control ">
+              <input class="input" type="text" required="required" placeholder="Title photo" value="{{ title }}" name="title">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Location of photo</label>
+            <div class="control ">
+              <input class="input" type="text" required="required" placeholder="Location" value="{{ location }}" name="location">
+            </div>
+          </div>
+          <div class="file">
+          <label for="photo">Upload photo</label>
+            Please choose a .jpg file: &nbsp;&nbsp;
+            <input type="file" name="photo" id="photo" value="" autocomplete="off" placeholder="Select photo" />
+          <!--
+            <label class="file-label">
+              <input class="file-input" type="file" name="photo">
+              <span class="file-cta">
+                <span class="file-label">
+                  Choose a file…
+                </span>
+              </span>
+            </label>
+            -->
+          </div>
+          <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-info">Add</button>
+              </div>
+          </div>
+          <input type="hidden" name="moduleAction" value="addPhoto" />
+        </form>
+      </section>
+{% endblock %}

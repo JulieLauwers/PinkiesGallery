@@ -1,0 +1,14 @@
+{% extends "layout/layout.twig" %}
+
+{% block pageContent %}
+    <section class="section">
+        <h1 class="title is-1">Gallery</h1>
+        <div class="photo-display-home">
+        {% for photo in photos %}
+            <figure class="image image-size">
+                <a href="/gallery/{{photo.id}}"><img src="{{photo.path}}{{photo.name}}{{photo.extension}}"></a>
+            </figure>
+        {% endfor %}
+        </div>
+      </section>
+{% endblock %}

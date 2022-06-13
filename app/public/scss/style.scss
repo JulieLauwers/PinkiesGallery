@@ -1,0 +1,109 @@
+.error {
+    color: red;
+}
+
+.photo {
+    float: left;
+}
+
+.image-size-detail {
+    max-width: 55rem;
+    
+}
+
+.photo p{
+    margin-top: 1rem;
+    color: gray;
+}
+
+.photo-display-home {  
+    width: fit-content;
+    margin: 20px auto;
+    height: auto;
+}
+
+.image-size {
+    /*
+    max-width: 42rem;
+    max-height: 28rem;
+    margin: 1rem;
+    */
+    width: calc(33% - 6px);
+    overflow:hidden;
+    height: fit-content;
+    margin:3px;
+    padding: 0;
+    display:block;
+    position:relative;
+    float:left;
+}
+
+.photo-display-home img{
+    width: 100%;
+  transition-duration: .3s;
+  max-width: 100%;
+  display:block;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.forms {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30rem;
+}
+
+.field {
+    text-align: center;
+}
+
+.field label {
+    float: left;
+}
+
+
+
+/*
+.field button {
+    background-color: pink;
+}
+*/
+
+.go-register {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.add-photo-text {
+    padding-bottom: 1rem;
+}
+
+.block {
+    border: 1px solid lightgray;
+    padding: 10px;
+    box-shadow: 10px 10px 8px 10px #d3cece;
+}
+
+.block p:first-of-type {
+    color: black;
+    margin-bottom: 1rem;
+}
+
+.block .last-objects {
+    color: gray;
+}
+
+
+
+
+
+@media only screen and (max-width: 900px) {
+    .image-size {
+        width: calc(50% - 6px);
+    }
+}
+@media only screen and (max-width: 400px) {
+    .image-size {
+        width: 100%;
+    }
+}

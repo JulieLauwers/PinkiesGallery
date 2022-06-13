@@ -1,0 +1,36 @@
+{% extends "layout/layout.twig" %}
+
+{% block pageContent %}
+<section class="section">
+          <form class="forms" method="POST" class="form">
+          <h1 class="is-size-1 has-text-centered">Login</h1>
+          {% if formErrors|length > 0 %}
+                {% for error in formErrors %}
+                <h5 class="error">{{ error }}</h5>
+                {% endfor %}
+                {% endif %}
+            <div class="field">
+            <label class="label">Username</label>
+            <div class="control ">
+              <input class="input" type="text" required="required" placeholder="Username" value="{{ username }}" name="username">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="password" placeholder="Password" name="password">
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-primary">Login</button>
+              </div>
+          </div>
+          <input type="hidden" name="moduleAction" value="login" />
+        </form>
+        <div class="go-register">
+            <p>Don't have an account yet?</p>
+            <a href="/register"><span>Register</span></a>
+        </div>
+      </section>
+{% endblock %}
