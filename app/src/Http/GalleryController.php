@@ -16,7 +16,7 @@ class GalleryController extends BaseController {
 
         $stmt = $this->conn->prepare('SELECT role FROM users WHERE role = ? AND id = ?');
         $result = $stmt->executeQuery(['admin', $userId]);
-        $role = $result->fetchAssociative()['role'];
+        $role = isset($result->fetchAssociative()['role']) ? $result->fetchAssociative()['role'] : '';
 
         $tpl = $this->twig->load('gallery.twig');
 
@@ -68,7 +68,7 @@ class GalleryController extends BaseController {
         $result = $stmt->executeQuery(['admin', $userId]);
         $role = $result->fetchAssociative()['role'];
 
-        if ($role !== 'admin') {
+        if (!$loggedIn || $role !== 'admin') {
             header('Location: /');
             die();
         }

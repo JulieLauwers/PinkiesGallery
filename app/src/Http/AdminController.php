@@ -4,29 +4,24 @@ namespace Http;
 
 class AdminController extends BaseController {
     public function showAdmin() {
-    $name = 'Admin';
+        $name = 'Admin';
 
-    $userId = isset($_SESSION['userid']) ? $_SESSION['userid'] : '';
-    $username = isset($_SESSION['user']) ? $_SESSION['user'] : '';
-    $loggedIn = isset($_SESSION['loggedin']) ? $_SESSION['loggedin'] : false;
+        $userId = isset($_SESSION['userid']) ? $_SESSION['userid'] : '';
+        $username = isset($_SESSION['user']) ? $_SESSION['user'] : '';
+        $loggedIn = isset($_SESSION['loggedin']) ? $_SESSION['loggedin'] : false;
 
-    $stmt = $this->conn->prepare('SELECT role FROM users WHERE role = ? AND id = ?');
-    $result = $stmt->executeQuery(['admin', $userId]);
-    $role = $result->fetchAssociative()['role'];
+        $stmt = $this->conn->prepare('SELECT role FROM users WHERE role = ? AND id = ?');
+        $result = $stmt->executeQuery(['admin', $userId]);
+        $role = $result->fetchAssociative()['role'];
 
-    if ($role !== 'admin') {
-        header('Location: /');
-        die();
-    }
-
-    $stmt = $this->conn->prepare('SELECT * FROM messages;');
-    $result = $stmt->executeQuery();
-    $messages = $result->fetchAllAssociative();
-
-    if ($role !== 'admin') {
-        header('Location: /');
+        if ($role !== 'admin' || !$loggedIn) {
+            header('Location: /');
             die();
-    }
+        }
+
+        $stmt = $this->conn->prepare('SELECT * FROM messages;');
+        $result = $stmt->executeQuery();
+        $messages = $result->fetchAllAssociative();
 
         $tpl = $this->twig->load('admin.twig');
         echo $tpl->render([
@@ -53,7 +48,7 @@ class AdminController extends BaseController {
         $result = $stmt->executeQuery(['admin', $userId]);
         $role = $result->fetchAssociative()['role'];
 
-        if ($role !== 'admin') {
+        if ($role !== 'admin' || !$loggedIn) {
             header('Location: /');
             die();
         }
@@ -159,7 +154,7 @@ class AdminController extends BaseController {
         $result = $stmt->executeQuery(['admin', $userId]);
         $role = $result->fetchAssociative()['role'];
 
-        if ($role !== 'admin') {
+        if ($role !== 'admin' || !$loggedIn) {
             header('Location: /');
             die();
         }
@@ -190,7 +185,7 @@ class AdminController extends BaseController {
         $result = $stmt->executeQuery(['admin', $userId]);
         $role = $result->fetchAssociative()['role'];
 
-        if ($role !== 'admin') {
+        if ($role !== 'admin' || !$loggedIn) {
             header('Location: /');
             die();
         }

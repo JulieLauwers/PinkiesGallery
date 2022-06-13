@@ -1,3 +1,9 @@
+body {
+    position: relative;
+    min-height: 100%;
+    min-height: 100vh;
+}
+
 .error {
     color: red;
 }
@@ -93,9 +99,9 @@
     color: gray;
 }
 
-
-
-
+footer {
+    position: relative;
+}
 
 @media only screen and (max-width: 900px) {
     .image-size {

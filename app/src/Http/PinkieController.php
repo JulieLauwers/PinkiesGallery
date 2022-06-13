@@ -61,6 +61,10 @@ class PinkieController extends BaseController {
         $userId = isset($_SESSION['userid']) ? $_SESSION['userid'] : '';
         $username = isset($_SESSION['user']) ? $_SESSION['user'] : '';
 
+        if (!$loggedIn) {
+            header('Location: /');
+        }
+
         $stmt = $this->conn->prepare('SELECT role FROM users WHERE role = ? AND id = ?');
         $result = $stmt->executeQuery(["admin", $userId]);
         $info = $result->fetchAssociative();
@@ -69,14 +73,19 @@ class PinkieController extends BaseController {
 
         $statment = $this->conn->prepare('SELECT email FROM users WHERE id = ?;'); //limit opzetten van 6
         $result = $statment->executeQuery([$userId]);
-        $email = $result->fetchAssociative();
+
+        $email = $result->fetchAssociative()['email'];
+        /*if ($email === '') {
+            header('Location: /');
+            die();
+        }*/
 
         $tpl = $this->twig->load('account.twig');
 
         echo $tpl->render([
-           'header'=>$name,
-           'email'=>$email,
-           'loggedIn' => $loggedIn,
+            'header'=>$name,
+            'email'=>$email,
+            'loggedIn' => $loggedIn,
             'username' => $username,
             'userId' => $userId,
             'userRole' => $role
