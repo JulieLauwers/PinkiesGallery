@@ -71,7 +71,7 @@ composer require "twig/twig:^2.0"
 ```
 * Install Bramus router
 ```shell
-composer require composer require bramus/router ~1.6
+composer require bramus/router ~1.6
 ```
 
 ## Important comments!
@@ -90,4 +90,4 @@ composer dumpautoload
 ### If you are using docker and you start this project with <code>docker-compose up</code> but you get an error, make sure there are no other projects running on the same post as this project. If so use <code>docker-compose down</code> in your other project to stop it from running. If necessary delete the containers with <code>docker rm idcontainer</code>.
 
 ## Last but not least
-### If you use my pictures, always write my name with them because they are 100% mine and I don't want others to use them as there own.
+### If you use my pictures, always write my name with them because they are 100% mine and I don't want others to use them as their own.
